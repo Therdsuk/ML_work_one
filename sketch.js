@@ -9,7 +9,7 @@ let lastTrashTime = 0;
 function preload() {
   bodyPose = ml5.bodyPose();
   img = loadImage("image/crap_body.png");
-  bgImg = loadImage("image/background.png");
+  bgImg = loadImage("image/background3.png");
   imgLeft = loadImage("image/crap_left_hand.png");
   imgRight = loadImage("image/crap_right_hand.png");
   basePoint = loadImage("image/base_point.png");
@@ -101,7 +101,7 @@ function updateAndDrawTrashObjects() {
   let currentTime = millis();
 
   // Add new trash objects every 500ms (2 per second)
-  if (currentTime - lastTrashTime > 1000) {
+  if (currentTime - lastTrashTime > 3000) {
     addTrashObject();
     lastTrashTime = currentTime;
   }
@@ -119,14 +119,14 @@ function updateAndDrawTrashObjects() {
 }
 
 function addTrashObject() {
-  let size = random(100, 200);
+  let size = 250;
   let images = [trash1, trash2, trash3, trash4, trash5, trash6];
   let randomImage = random(images);
   trashObjects.push({
     x: random(200, 800),
     y: random(-200, -50),
     size: size,
-    speed: random(2, 3),
+    speed: 2,
     image: randomImage,
   });
 }
