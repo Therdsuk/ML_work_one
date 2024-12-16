@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coral Fade Effect</title>
+    <style>
+        .coral {
+            width: 500px;
+            height: 500px;
+            background-image: url('base_point.png');
+            background-size: cover;
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="coral" class="coral"></div>
+
+    <script>
+        function fadeToWhite() {
+            var coral = document.getElementById('coral');
+            var opacity = 1; // เริ่มต้นที่ 1
+            var count = 0; // นับจำนวนครั้งที่เฟด
+
+            var interval = setInterval(function() {
+                if (count < 5) {
+                    // คำนวณความโปร่งใส (opacity) ให้ลดลง
+                    opacity -= 0.2; // ลด opacity ทุกครั้งที่ทำการเฟด
+                    coral.style.opacity = opacity;
+
+                    count++;
+                } else {
+                    clearInterval(interval); // หยุดการเปลี่ยนแปลงเมื่อครบ 5 ครั้ง
+                    coral.style.backgroundColor = "white"; // เมื่อ opacity เป็น 0 จะเปลี่ยนเป็นสีขาว
+                }
+            }, 1000); // เฟดทุกๆ 1 วินาที
+        }
+
+        // เรียกใช้ฟังก์ชันเมื่อค่าคือ false
+        var value = false;
+        if (value === false) {
+            fadeToWhite();
+        }
+    </script>
+</body>
+</html>
